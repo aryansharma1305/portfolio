@@ -1,8 +1,6 @@
 # Aryan Sharma — Portfolio
 
-> Personal portfolio website built with React, TypeScript, Tailwind CSS, and Framer Motion.
-
-**Live:** [aryansharma1305.github.io/portfolio](https://aryansharma1305.github.io/portfolio)
+> Personal portfolio website built with React, TypeScript, Tailwind CSS, and Framer Motion
 
 ---
 
