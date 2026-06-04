@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  background-color: #0c0c0c;
+  font-family: 'Kanit', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.hero-heading {
+  background: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: block;
+}
+
+/* Fluid heading that shrinks to fit */
+.heading-fit {
+  font-size: clamp(2.5rem, 12.5vw, 12.5vw);
+}
+
+/* section card */
+.section-card-light {
+  background: #ffffff;
+  border-radius: 48px 48px 0 0;
+}
+.section-card-dark {
+  background: #0C0C0C;
+  border-radius: 48px 48px 0 0;
+}
