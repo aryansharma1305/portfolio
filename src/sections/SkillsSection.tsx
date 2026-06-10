@@ -83,8 +83,8 @@ const SkillBar: React.FC<{ name: string; level: number; color: string; delay: nu
   const width = useTransform(scrollYProgress, [0, 1], ['0%', `${level}%`]);
 
   return (
-    <div ref={ref} style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <div ref={ref} style={{ display: 'flex', flexDirection: 'column', gap: '5px', minWidth: 0 }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.75rem', minWidth: 0 }}>
         <span style={{
           color: 'rgba(215,226,234,0.8)',
           fontSize: 'clamp(0.7rem, 1.1vw, 0.88rem)',
@@ -92,12 +92,15 @@ const SkillBar: React.FC<{ name: string; level: number; color: string; delay: nu
           fontFamily: "'Kanit', sans-serif",
           textTransform: 'uppercase',
           letterSpacing: '0.06em',
+          overflowWrap: 'anywhere',
+          minWidth: 0,
         }}>{name}</span>
         <span style={{
           color: color,
           fontSize: '0.7rem',
           fontWeight: 700,
           fontFamily: "'Kanit', sans-serif",
+          flexShrink: 0,
         }}>{level}%</span>
       </div>
       <div style={{
@@ -134,13 +137,14 @@ const SkillCard: React.FC<{ group: (typeof SKILL_GROUPS)[0]; cardIndex: number }
       gap: '1.5rem',
       position: 'relative',
       overflow: 'hidden',
+      minWidth: 0,
     }}
   >
     {/* Glow corner */}
     <div style={{
       position: 'absolute',
-      top: '-40px',
-      right: '-40px',
+      top: 0,
+      right: 0,
       width: '120px',
       height: '120px',
       borderRadius: '50%',
@@ -149,7 +153,7 @@ const SkillCard: React.FC<{ group: (typeof SKILL_GROUPS)[0]; cardIndex: number }
     }} />
 
     {/* Card header */}
-    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0 }}>
       <span style={{
         fontSize: '1.5rem',
         color: group.color,
@@ -164,6 +168,8 @@ const SkillCard: React.FC<{ group: (typeof SKILL_GROUPS)[0]; cardIndex: number }
         fontFamily: "'Kanit', sans-serif",
         textTransform: 'uppercase',
         letterSpacing: '0.05em',
+        overflowWrap: 'anywhere',
+        minWidth: 0,
       }}>{group.title}</span>
     </div>
 
@@ -187,6 +193,7 @@ const SkillsSection: React.FC = () => {
     <section id="skills" style={{
       backgroundColor: '#0C0C0C',
       padding: 'clamp(5rem, 10vw, 9rem) clamp(1.5rem, 5vw, 3.5rem)',
+      overflow: 'hidden',
     }}>
 
       {/* Heading */}
@@ -215,9 +222,10 @@ const SkillsSection: React.FC = () => {
         maxWidth: '1100px',
         margin: '0 auto',
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(280px, 45%, 520px), 1fr))',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
         gap: 'clamp(1rem, 2vw, 1.75rem)',
         marginBottom: 'clamp(4rem, 7vw, 7rem)',
+        minWidth: 0,
       }}>
         {SKILL_GROUPS.map((g, i) => (
           <SkillCard key={g.title} group={g} cardIndex={i} />
@@ -250,12 +258,15 @@ const SkillsSection: React.FC = () => {
           gap: '10px',
           maxWidth: '780px',
           margin: '0 auto',
+          width: '100%',
+          minWidth: 0,
+          overflow: 'hidden',
         }}>
           {ACHIEVEMENTS.map((a, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
               style={{
@@ -266,6 +277,7 @@ const SkillsSection: React.FC = () => {
                 borderRadius: '14px',
                 backgroundColor: '#0F0F0F',
                 border: `1px solid ${a.color}18`,
+                minWidth: 0,
               }}
             >
               <span style={{ fontSize: '1.3rem', flexShrink: 0 }}>{a.emoji}</span>
@@ -275,6 +287,8 @@ const SkillsSection: React.FC = () => {
                 fontSize: 'clamp(0.78rem, 1.2vw, 0.95rem)',
                 fontFamily: "'Kanit', sans-serif",
                 lineHeight: 1.4,
+                overflowWrap: 'anywhere',
+                minWidth: 0,
               }}>{a.text}</span>
               <div style={{
                 marginLeft: 'auto',

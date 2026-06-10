@@ -6,6 +6,7 @@ import ServicesSection from './sections/ServicesSection';
 import ProjectsSection from './sections/ProjectsSection';
 import FooterSection from './sections/FooterSection';
 import CustomCursor from './components/CustomCursor';
+import { MotionConfig, motion } from 'framer-motion';
 
 class ErrorBoundary extends React.Component<
   { children: React.ReactNode },
@@ -34,19 +35,50 @@ class ErrorBoundary extends React.Component<
 function App() {
   return (
     <ErrorBoundary>
-      <CustomCursor />
-      <div style={{
-        backgroundColor: '#0C0C0C',
-        fontFamily: "'Kanit', sans-serif",
-        overflowX: 'hidden',
-      }}>
-        <HeroSection />
-        <AboutSection />
-        <SkillsSection />
-        <ServicesSection />
-        <ProjectsSection />
-        <FooterSection />
-      </div>
+      <MotionConfig reducedMotion="user">
+        <CustomCursor />
+        <motion.div
+          className="portfolio-shell"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
+          <HeroSection />
+          <motion.div
+            initial={{ opacity: 0, y: 44 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.16 }}
+            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <AboutSection />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 44 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.16 }}
+            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <SkillsSection />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 44 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.16 }}
+            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <ServicesSection />
+          </motion.div>
+          <ProjectsSection />
+          <motion.div
+            initial={{ opacity: 0, y: 44 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.12 }}
+            transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <FooterSection />
+          </motion.div>
+        </motion.div>
+      </MotionConfig>
     </ErrorBoundary>
   );
 }
