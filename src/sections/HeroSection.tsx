@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Magnet from '../components/Magnet';
 import ContactButton from '../components/ContactButton';
-import ResumeButton from '../components/ResumeButton';
 
 const f = (delay: number, y = 0, x = 0) => ({
   initial: { opacity: 0, y, x },
@@ -21,7 +20,7 @@ const HeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section style={{
+    <section id="top" style={{
       height: '100vh',
       minHeight: '620px',
       display: 'flex',
@@ -29,6 +28,8 @@ const HeroSection: React.FC = () => {
       overflow: 'hidden',
       position: 'relative',
       backgroundColor: '#0C0C0C',
+      /* keep content clear of the fixed navbar */
+      paddingTop: 'clamp(58px, 7vh, 72px)',
     }}>
 
       {/* subtle radial glow behind portrait */}
@@ -44,44 +45,6 @@ const HeroSection: React.FC = () => {
         pointerEvents: 'none',
         zIndex: 1,
       }} />
-
-      {/* ── Navbar ── */}
-      <motion.nav {...f(0, -20)} style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '1.6rem clamp(1.25rem, 4vw, 3rem)',
-        flexShrink: 0,
-        zIndex: 20,
-        position: 'relative',
-      }}>
-        {/* Nav links */}
-        <div style={{ display: 'flex', gap: 'clamp(1.2rem, 3vw, 3rem)' }}>
-          {[
-            { label: 'About', href: '#about' },
-            { label: 'Skills', href: '#skills' },
-            { label: 'Projects', href: '#projects' },
-            { label: 'Contact', href: '#contact' },
-          ].map(({ label, href }) => (
-            <a key={label} href={href} style={{
-              color: '#D7E2EA',
-              fontWeight: 500,
-              textTransform: 'uppercase',
-              letterSpacing: '0.1em',
-              fontSize: 'clamp(0.72rem, 1.2vw, 1.2rem)',
-              textDecoration: 'none',
-              transition: 'opacity 0.2s',
-              fontFamily: "'Kanit', sans-serif",
-            }}
-              onMouseEnter={e => (e.currentTarget.style.opacity = '0.5')}
-              onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
-            >{label}</a>
-          ))}
-        </div>
-
-        {/* Resume button — top right */}
-        <ResumeButton />
-      </motion.nav>
 
       {/* ── Heading ── */}
       <div style={{ overflow: 'hidden', flexShrink: 0, zIndex: 2, position: 'relative' }}>
@@ -153,10 +116,11 @@ const HeroSection: React.FC = () => {
           inactiveTransition="transform 0.6s ease-in-out"
         >
           <img
-            src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png"
+            src={import.meta.env.BASE_URL + 'images/portrait.png'}
             alt="Aryan Sharma"
             style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }}
             draggable={false}
+            fetchPriority="high"
           />
         </Magnet>
       </motion.div>

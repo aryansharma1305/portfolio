@@ -1,28 +1,24 @@
 import React from 'react';
 
-const LiveProjectButton: React.FC = () => {
+interface LiveProjectButtonProps {
+  href: string;
+  label?: string;
+}
+
+const LiveProjectButton: React.FC<LiveProjectButtonProps> = ({ href, label = 'Live Demo' }) => {
   return (
-    <button
-      style={{
-        borderRadius: '9999px',
-        border: '2px solid #D7E2EA',
-        color: '#D7E2EA',
-        fontFamily: "'Kanit', sans-serif",
-        fontWeight: 500,
-        textTransform: 'uppercase',
-        letterSpacing: '0.15em',
-        padding: '10px 28px',
-        fontSize: '0.85rem',
-        background: 'transparent',
-        cursor: 'pointer',
-        transition: 'background 0.2s',
-        whiteSpace: 'nowrap',
-      }}
-      onMouseEnter={e => (e.currentTarget.style.background = 'rgba(215,226,234,0.1)')}
-      onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="project-link project-link-live"
     >
-      Live Project
-    </button>
+      {label}
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="7" y1="17" x2="17" y2="7" />
+        <polyline points="7 7 17 7 17 17" />
+      </svg>
+    </a>
   );
 };
 

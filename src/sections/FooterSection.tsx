@@ -184,7 +184,7 @@ const FooterSection: React.FC = () => {
           textTransform: 'uppercase',
           letterSpacing: '0.1em',
         }}>
-          © 2025 Aryan Sharma · SRM STECH · 9.96 CGPA
+          © {new Date().getFullYear()} Aryan Sharma · SRM STECH · 9.96 CGPA
         </span>
 
         <span style={{

@@ -1,8 +1,8 @@
 import React from 'react';
 
-// 🔁 Replace this with your actual Google Drive / direct PDF link
-const RESUME_URL =
-  'https://drive.google.com/file/d/1oGRwuJFyXffj4ARyfnpCoGMzbUd8vIDc/view';
+// Local copy of the resume — one-click download, no Drive dependency.
+// To update: replace public/resume.pdf with the new file.
+const RESUME_URL = import.meta.env.BASE_URL + 'resume.pdf';
 
 interface ResumeButtonProps {
   style?: React.CSSProperties;
@@ -12,8 +12,7 @@ const ResumeButton: React.FC<ResumeButtonProps> = ({ style }) => {
   return (
     <a
       href={RESUME_URL}
-      target="_blank"
-      rel="noopener noreferrer"
+      download
       style={{
         display: 'inline-flex',
         alignItems: 'center',

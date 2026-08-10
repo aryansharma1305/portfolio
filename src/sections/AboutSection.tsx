@@ -38,28 +38,28 @@ const AboutSection: React.FC = () => {
       {/* Decorative corner images */}
       <motion.img
         {...fadeFrom(0.1, -80, 0, 0.9)}
-        src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png"
+        src={import.meta.env.BASE_URL + 'images/moon.png'}
         alt=""
         style={{ position: 'absolute', top: '6%', left: 'clamp(1rem, 4vw, 5rem)', width: 'clamp(80px, 12vw, 190px)', pointerEvents: 'none' }}
         draggable={false}
       />
       <motion.img
         {...fadeFrom(0.25, -80, 0, 0.9)}
-        src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png"
+        src={import.meta.env.BASE_URL + 'images/orbit.png'}
         alt=""
         style={{ position: 'absolute', bottom: '8%', left: 'clamp(1.5rem, 8vw, 8rem)', width: 'clamp(70px, 10vw, 160px)', pointerEvents: 'none' }}
         draggable={false}
       />
       <motion.img
         {...fadeFrom(0.15, 80, 0, 0.9)}
-        src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png"
+        src={import.meta.env.BASE_URL + 'images/lego.png'}
         alt=""
         style={{ position: 'absolute', top: '6%', right: 'clamp(1rem, 4vw, 5rem)', width: 'clamp(80px, 12vw, 190px)', pointerEvents: 'none' }}
         draggable={false}
       />
       <motion.img
         {...fadeFrom(0.3, 80, 0, 0.9)}
-        src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png"
+        src={import.meta.env.BASE_URL + 'images/constellation.png'}
         alt=""
         style={{ position: 'absolute', bottom: '8%', right: 'clamp(1.5rem, 8vw, 8rem)', width: 'clamp(90px, 13vw, 200px)', pointerEvents: 'none' }}
         draggable={false}

@@ -6,6 +6,7 @@ import ServicesSection from './sections/ServicesSection';
 import ProjectsSection from './sections/ProjectsSection';
 import FooterSection from './sections/FooterSection';
 import CustomCursor from './components/CustomCursor';
+import Navbar from './components/Navbar';
 import { MotionConfig, motion } from 'framer-motion';
 
 class ErrorBoundary extends React.Component<
@@ -37,6 +38,7 @@ function App() {
     <ErrorBoundary>
       <MotionConfig reducedMotion="user">
         <CustomCursor />
+        <Navbar />
         <motion.div
           className="portfolio-shell"
           initial={{ opacity: 0 }}

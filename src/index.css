@@ -14,6 +14,11 @@ html, body, #root {
   min-width: 0;
 }
 
+/* keep anchored sections clear of the fixed navbar */
+html {
+  scroll-padding-top: 5.5rem;
+}
+
 body {
   overflow-x: hidden;
   color: #d7e2ea;
@@ -419,7 +424,7 @@ a {
 
 @media (max-width: 640px) {
   html {
-    scroll-padding-top: 1rem;
+    scroll-padding-top: 4.5rem;
   }
 
   .section-card-light,
@@ -478,6 +483,121 @@ a {
   .project-visual-orbit {
     max-width: 180px;
   }
+}
+
+/* ── Navbar responsive helpers ── */
+.nav-desktop-only {
+  display: flex;
+}
+
+.nav-burger {
+  display: none;
+}
+
+@media (max-width: 820px) {
+  .nav-desktop-only {
+    display: none !important;
+  }
+
+  .nav-burger {
+    display: inline-flex !important;
+  }
+}
+
+/* ── Project card actions (GitHub + Live Demo) ── */
+.project-card-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+.project-link-live {
+  background: linear-gradient(123deg, #B600A8, #7621B0);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #FFFFFF;
+  box-shadow: 0 0 22px rgba(182, 0, 168, 0.28);
+}
+
+.project-link-live:hover {
+  background: linear-gradient(123deg, #c914b8, #8a2cc4);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 920px) {
+  .project-card-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .project-card-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+/* ── Projects sync status ── */
+.projects-sync {
+  align-items: center;
+  color: rgba(215, 226, 234, 0.42);
+  display: flex;
+  font-size: clamp(0.62rem, 0.9vw, 0.78rem);
+  font-weight: 500;
+  gap: 0.6rem;
+  justify-content: center;
+  letter-spacing: 0.14em;
+  margin: -2.5rem 0 clamp(2.5rem, 5vw, 4rem);
+  text-transform: uppercase;
+}
+
+.sync-dot {
+  border-radius: 50%;
+  flex: 0 0 auto;
+  height: 8px;
+  width: 8px;
+}
+
+.sync-dot.loading {
+  animation: sync-pulse 1.4s ease-in-out infinite;
+  background: rgba(215, 226, 234, 0.5);
+}
+
+.sync-dot.live {
+  background: #34d399;
+  box-shadow: 0 0 10px rgba(52, 211, 153, 0.8);
+}
+
+.sync-dot.offline {
+  background: #fb7185;
+  box-shadow: 0 0 10px rgba(251, 113, 133, 0.6);
+}
+
+@keyframes sync-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ── Projects footer link ── */
+.projects-more {
+  border: 1px solid rgba(215, 226, 234, 0.3);
+  border-radius: 999px;
+  color: #D7E2EA;
+  font-family: 'Kanit', sans-serif;
+  font-size: clamp(0.68rem, 0.95vw, 0.82rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  padding: 0.85rem 2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.projects-more:hover {
+  background: rgba(215, 226, 234, 0.06);
+  border-color: rgba(215, 226, 234, 0.65);
+  box-shadow: 0 0 24px rgba(118, 33, 176, 0.25);
 }
 
 @media (prefers-reduced-motion: reduce) {
